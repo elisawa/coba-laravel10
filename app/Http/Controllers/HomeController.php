@@ -10,7 +10,8 @@ class HomeController extends Controller
     public function index(){
         $data = User::get();
 
-        return view('index',compact('data'));
+        //return view('index',compact('data'));
+        return view('layout.dashboard');
     }
 }
 
