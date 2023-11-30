@@ -11,7 +11,7 @@ class HomeController extends Controller
         $data = User::get();
 
         //return view('index',compact('data'));
-        return view('layout.dashboard');
+        return view('dashboard');
     }
 }
 
