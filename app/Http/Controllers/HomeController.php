@@ -21,8 +21,7 @@ class HomeController extends Controller
     }
 
     public function store(Request $request){
-       
-        
+               
         $validator = Validator::make($request->all(),[
             'nama' => 'required',
             'email' => 'required|email',
@@ -42,6 +41,13 @@ class HomeController extends Controller
 
            return redirect()->route('index');
             //dd($request->all());
+    }
+
+
+
+    public function edit($id) {
+        $data = User()->find($id);
+        return view('user.useredit',compact('data'));
     }
 }
 

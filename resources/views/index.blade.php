@@ -58,8 +58,8 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $d->name }}</td>
                                         <td>{{ $d->email }}</td>
-                                        <td><span class="btn btn-success">Edit</span> <span
-                                                class="btn btn-danger">Hapus</span>
+                                        <td><a href="{{ route('user.edit',['id' => $d->id]) }}"> <span class="btn btn-success">Edit</span></a>
+                                              <span class="btn btn-danger">Hapus</span>
                                             <span class="right badge badge-danger">Hapus</span>
                                         </td>
                                     </tr>
