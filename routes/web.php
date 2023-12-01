@@ -18,5 +18,6 @@ use App\Http\Controllers\HomeController;
 //     return view('welcome');
 // });
 
-Route::get('/',[HomeController::class,'index']);
-Route::get('/cek',[HomeController::class,'cek']);
+Route::get('/',[HomeController::class,'index'])->name('index');
+Route::get('/create',[HomeController::class,'create'])->name('user.create');
+Route::post('/user.store',[HomeController::class,'store'])->name('user.store');
