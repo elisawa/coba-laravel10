@@ -31,19 +31,20 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="{{ route('user.store') }}" method="POST" name="fedituser">
+                <form action="{{ route('user.update',['id' => $data->id]) }}" method="POST" name="fedituser">
                     @csrf
+                    @method('PUT')
                     <div class="card-body">
                         <div class="form-group">
                             <label for="InputNama">Nama</label>
-                            <input type="text" value="" class="form-control" id="InputNama" placeholder="Enter name" name="nama">
+                            <input type="text" value="{{ $data->name }}" class="form-control" id="InputNama" placeholder="Enter name" name="nama">
                             @error('nama')
                                 <small>{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email</label>
-                            <input type="email" value="" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="email">
+                            <input type="email" value="{{ $data->email }}" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="email">
                             @error('email')
                             <small>{{ $message }}</small>
                         @enderror

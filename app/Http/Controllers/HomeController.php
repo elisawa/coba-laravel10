@@ -44,10 +44,47 @@ class HomeController extends Controller
     }
 
 
-
     public function edit($id) {
-        $data = User()->find($id);
+        $data = User::find($id);
+        //dd($data);
         return view('user.useredit',compact('data'));
     }
+
+
+    public function update(Request $request,$id) {
+        //dd($request->all());
+        $validator = Validator::make($request->all(),[
+            'nama' => 'required',
+            'email' => 'required|email',
+            'password' => 'nullable'
+        ]);
+
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+            }
+
+           $data['name'] = $request->nama;
+           $data['email'] = $request->email;
+
+           if ($request->password) {
+            $data['password'] = Hash::make($request->password);
+           }
+
+           //update
+           User::whereId($id)->update($data);
+
+           return redirect()->route('index');
+
+    }
+
+    public function delete(Request $request,$id){
+         
+            User::find($id)->delete();
+
+
+            return redirect()->route('index')->with('Berhasil dihapus.');
+        
+    }
+
 }
 
